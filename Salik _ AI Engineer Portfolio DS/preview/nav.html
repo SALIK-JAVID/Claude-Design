@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  body { margin: 0; padding: 0; background: var(--bg-subtle); min-height: 150px; }
+  nav {
+    height: 56px; background: rgba(255, 252, 248, 0.75);
+    backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+    border-bottom: 0.5px solid var(--border);
+    display: flex; align-items: center; padding: 0 24px; gap: 28px;
+  }
+  .logo { font-family: var(--font-sans); font-weight: 700; font-size: 15px; letter-spacing: -0.04em; }
+  .logo span { color: var(--fg-subtle); }
+  .links { display: flex; gap: 24px; margin-left: 32px; }
+  .link { font-size: 13px; color: var(--fg-muted); font-weight: 500; }
+  .link.active { color: var(--fg); }
+  .right { margin-left: auto; display: flex; gap: 8px; align-items: center; }
+  .cmdk {
+    display: inline-flex; align-items: center; gap: 8px;
+    height: 30px; padding: 0 10px;
+    background: var(--bg); border: 0.5px solid var(--border-strong); border-radius: 6px;
+    font-size: 12px; color: var(--fg-subtle);
+    box-shadow: var(--shadow-xs);
+  }
+  .cmdk kbd { font-family: var(--font-mono); font-size: 10px; padding: 1px 4px; border: 0.5px solid var(--border); border-radius: 3px; color: var(--fg-muted); }
+  .theme { width: 30px; height: 30px; border-radius: 6px; border: 0.5px solid var(--border-strong); display: grid; place-items: center; color: var(--fg-muted); }
+  .space { padding: 24px; color: var(--fg-subtle); font-size: 12px; font-family: var(--font-mono); }
+</style>
+</head>
+<body>
+  <nav>
+    <div class="logo">salik<span>.dev</span></div>
+    <div class="links">
+      <span class="link active">Work</span>
+      <span class="link">About</span>
+      <span class="link">Services</span>
+      <span class="link">Writing</span>
+    </div>
+    <div class="right">
+      <div class="cmdk">Search <kbd>⌘K</kbd></div>
+      <div class="theme">☾</div>
+    </div>
+  </nav>
+  <div class="space">sticky · 56px · backdrop-blur 16px · 0.5px hairline</div>
+</body>
+</html>

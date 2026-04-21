@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  body { padding: 24px 32px; background: var(--bg); }
+  .row { display: grid; grid-template-columns: 120px 1fr; gap: 16px; align-items: baseline; padding: 6px 0; border-bottom: 0.5px solid var(--border); }
+  .row:last-child { border-bottom: 0; }
+  .meta { font-family: var(--font-mono); font-size: 11px; color: var(--fg-subtle); }
+  .h1 { font-size: 44px; font-weight: 700; letter-spacing: -0.02em; line-height: 1.05; }
+  .h2 { font-size: 32px; font-weight: 600; letter-spacing: -0.02em; line-height: 1.15; }
+  .h3 { font-size: 24px; font-weight: 600; letter-spacing: -0.01em; line-height: 1.2; }
+  .lead { font-size: 17px; line-height: 1.55; color: var(--fg-muted); }
+  .body { font-size: 15px; line-height: 1.55; }
+  .small { font-size: 13px; color: var(--fg-muted); }
+</style>
+</head>
+<body>
+  <div class="row"><span class="meta">H1 · 44/1.05</span><span class="h1">Full stack AI engineer.</span></div>
+  <div class="row"><span class="meta">H2 · 32/1.15</span><span class="h2">Selected work, 2024 → now.</span></div>
+  <div class="row"><span class="meta">H3 · 24/1.2</span><span class="h3">Atlas — agentic research.</span></div>
+  <div class="row"><span class="meta">Lead · 17/1.55</span><span class="lead">Shipping production-grade agents, RAG pipelines, and the apps that wrap them.</span></div>
+  <div class="row"><span class="meta">Body · 15/1.55</span><span class="body">I build scalable systems. Available for contract work through Q2.</span></div>
+  <div class="row"><span class="meta">Small · 13/1.55</span><span class="small">p95 latency cut 3.2×  ·  94% tool accuracy</span></div>
+</body>
+</html>

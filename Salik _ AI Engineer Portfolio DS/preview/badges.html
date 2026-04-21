@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  body { padding: 26px 28px; background: var(--bg); display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
+  .badge {
+    display: inline-flex; align-items: center; gap: 5px;
+    height: 22px; padding: 0 8px;
+    font-family: var(--font-mono); font-size: 11px; font-weight: 500;
+    letter-spacing: 0; border-radius: 9999px;
+    border: 0.5px solid var(--border-strong);
+    background: var(--bg-subtle); color: var(--fg-muted);
+  }
+  .badge .dot { width: 6px; height: 6px; border-radius: 50%; }
+  .avail { background: transparent; color: #2d6a4f; border-color: #c7dbce; }
+  .avail .dot { background: #4caf7a; box-shadow: 0 0 0 3px rgba(76, 175, 122, 0.18); animation: pulse 2s var(--ease-out) infinite; }
+  .year { background: var(--fg); color: var(--accent-fg); border-color: var(--fg); }
+  .tech { border-color: var(--border); }
+  @keyframes pulse { 0%,100% { opacity:1; } 50% { opacity: .5; } }
+</style>
+</head>
+<body>
+  <span class="badge avail"><span class="dot"></span>Available Q1</span>
+  <span class="badge year">2024 — NOW</span>
+  <span class="badge tech">typescript</span>
+  <span class="badge tech">postgres</span>
+  <span class="badge tech">pgvector</span>
+  <span class="badge">v2.1.0</span>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  body { padding: 22px 28px; background: var(--bg-subtle); display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .card {
+    background: var(--bg); border: 0.5px solid var(--border);
+    border-radius: 8px; padding: 18px; box-shadow: var(--shadow-sm);
+    transition: all 240ms var(--ease-out);
+  }
+  .card:hover { transform: translateY(-2px); border-color: var(--border-strong); box-shadow: var(--shadow-md); }
+  .idx { font-family: var(--font-serif); font-style: italic; font-size: 28px; color: var(--fg-subtle); line-height: 1; }
+  .title { font-size: 16px; font-weight: 600; margin-top: 8px; letter-spacing: -0.01em; }
+  .desc { font-size: 13px; color: var(--fg-muted); margin-top: 4px; line-height: 1.5; }
+  .chips { display: flex; gap: 4px; margin-top: 12px; flex-wrap: wrap; }
+  .chip { font-family: var(--font-mono); font-size: 10px; color: var(--fg-subtle); padding: 2px 6px; background: var(--bg-muted); border-radius: 3px; }
+</style>
+</head>
+<body>
+  <div class="card">
+    <div class="idx">01</div>
+    <div class="title">Atlas</div>
+    <div class="desc">An agentic research assistant. 8k daily runs.</div>
+    <div class="chips"><span class="chip">ts</span><span class="chip">react</span><span class="chip">pgvector</span></div>
+  </div>
+  <div class="card">
+    <div class="idx">02</div>
+    <div class="title">Prism</div>
+    <div class="desc">Realtime analytics for LLM ops. p95 cut 3.2×.</div>
+    <div class="chips"><span class="chip">rust</span><span class="chip">clickhouse</span></div>
+  </div>
+</body>
+</html>

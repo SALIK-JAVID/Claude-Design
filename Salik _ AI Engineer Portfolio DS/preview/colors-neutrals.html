@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  body { padding: 20px 24px; background: var(--bg); }
+  .ramp { display: grid; grid-template-columns: repeat(12, 1fr); gap: 4px; }
+  .sw { aspect-ratio: 1 / 1.4; border-radius: 4px; border: 0.5px solid var(--border); position: relative; overflow: hidden; }
+  .sw .lbl { position: absolute; left: 6px; bottom: 4px; font-family: var(--font-mono); font-size: 9px; color: var(--fg); mix-blend-mode: difference; filter: invert(1); }
+  .sw.dark .lbl { color: #FFFCF8; mix-blend-mode: normal; filter: none; }
+  .title { font-size: 11px; font-family: var(--font-mono); color: var(--fg-subtle); letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 12px; }
+  .hex-row { display: grid; grid-template-columns: repeat(12, 1fr); gap: 4px; margin-top: 6px; font-family: var(--font-mono); font-size: 9px; color: var(--fg-subtle); text-align: center; }
+</style>
+</head>
+<body>
+  <div class="title">Neutral ramp — warm paper → ink</div>
+  <div class="ramp">
+    <div class="sw" style="background:#FFFCF8"><span class="lbl">0</span></div>
+    <div class="sw" style="background:#F7F6F3"><span class="lbl">50</span></div>
+    <div class="sw" style="background:#EFEEEA"><span class="lbl">100</span></div>
+    <div class="sw" style="background:#E3E2DD"><span class="lbl">200</span></div>
+    <div class="sw" style="background:#CECCC5"><span class="lbl">300</span></div>
+    <div class="sw" style="background:#9B9A93"><span class="lbl">400</span></div>
+    <div class="sw dark" style="background:#787774"><span class="lbl">500</span></div>
+    <div class="sw dark" style="background:#57564F"><span class="lbl">600</span></div>
+    <div class="sw dark" style="background:#37352F"><span class="lbl">700</span></div>
+    <div class="sw dark" style="background:#2B2A26"><span class="lbl">800</span></div>
+    <div class="sw dark" style="background:#191918"><span class="lbl">900</span></div>
+    <div class="sw dark" style="background:#0A0A0A"><span class="lbl">1000</span></div>
+  </div>
+  <div class="hex-row">
+    <span>FFFCF8</span><span>F7F6F3</span><span>EFEEEA</span><span>E3E2DD</span><span>CECCC5</span><span>9B9A93</span><span>787774</span><span>57564F</span><span>37352F</span><span>2B2A26</span><span>191918</span><span>0A0A0A</span>
+  </div>
+</body>
+</html>

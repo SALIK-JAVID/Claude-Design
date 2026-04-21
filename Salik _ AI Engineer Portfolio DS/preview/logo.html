@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  body { padding: 24px 28px; background: var(--bg); display: flex; gap: 40px; align-items: center; }
+  .mark { display: flex; flex-direction: column; align-items: center; gap: 10px; }
+  .lbl { font-family: var(--font-mono); font-size: 10px; color: var(--fg-subtle); letter-spacing: 0.06em; text-transform: uppercase; }
+  .box { width: 64px; height: 64px; border-radius: 12px; display: grid; place-items: center; font-family: var(--font-sans); font-weight: 700; font-size: 34px; letter-spacing: -0.08em; }
+  .light { background: #191918; color: #FFFCF8; }
+  .dark { background: #FFFCF8; color: #191918; border: 0.5px solid var(--border); }
+  .word { font-family: var(--font-sans); font-weight: 700; font-size: 28px; letter-spacing: -0.04em; color: var(--fg); }
+  .word .t { color: var(--fg-subtle); }
+</style>
+</head>
+<body>
+  <div class="mark"><div class="box light">S/</div><span class="lbl">Monogram · dark</span></div>
+  <div class="mark"><div class="box dark">S/</div><span class="lbl">Monogram · light</span></div>
+  <div class="mark"><div class="word">salik<span class="t">.dev</span></div><span class="lbl">Wordmark</span></div>
+</body>
+</html>

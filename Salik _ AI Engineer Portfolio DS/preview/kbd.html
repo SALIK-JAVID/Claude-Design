@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  body { padding: 28px 30px; background: var(--bg); display: flex; gap: 10px; align-items: center; flex-wrap: wrap; font-family: var(--font-sans); }
+  .hint { display: inline-flex; align-items: center; gap: 8px; color: var(--fg-muted); font-size: 13px; }
+  kbd {
+    display: inline-flex; align-items: center; justify-content: center;
+    min-width: 22px; height: 22px; padding: 0 6px;
+    font-family: var(--font-mono); font-size: 11px; font-weight: 500;
+    background: var(--bg); color: var(--fg-muted);
+    border: 0.5px solid var(--border-strong); border-radius: 4px;
+    box-shadow: 0 1px 0 var(--border-strong);
+  }
+  .sep { color: var(--fg-subtle); font-size: 11px; }
+</style>
+</head>
+<body>
+  <span class="hint"><kbd>⌘</kbd><kbd>K</kbd>&nbsp;search</span>
+  <span class="sep">·</span>
+  <span class="hint"><kbd>J</kbd>/<kbd>K</kbd>&nbsp;navigate</span>
+  <span class="sep">·</span>
+  <span class="hint"><kbd>⇧</kbd><kbd>?</kbd>&nbsp;shortcuts</span>
+  <span class="sep">·</span>
+  <span class="hint"><kbd>esc</kbd>&nbsp;close</span>
+</body>
+</html>

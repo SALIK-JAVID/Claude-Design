@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Salik Javid — Full Stack AI Engineer</title>
+
+<link rel="stylesheet" href="../../colors_and_type.css">
+<link rel="stylesheet" href="portfolio.css">
+<link rel="icon" href="../../assets/salik-logo.svg">
+
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+</head>
+<body>
+<div id="root"></div>
+
+<script type="text/babel" src="primitives.jsx"></script>
+<script type="text/babel" src="nav.jsx"></script>
+<script type="text/babel" src="hero.jsx"></script>
+<script type="text/babel" src="projects.jsx"></script>
+<script type="text/babel" src="architecture.jsx"></script>
+<script type="text/babel" src="skills.jsx"></script>
+<script type="text/babel" src="sections.jsx"></script>
+
+<script type="text/babel">
+const { useState, useEffect, useCallback } = React;
+
+const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
+  "theme": "dark",
+  "accent": "graphite",
+  "density": "spacious",
+  "fontDisplay": "serif",
+  "heroVariant": "editorial",
+  "projectsVariant": "sticky",
+  "grain": false
+}/*EDITMODE-END*/;
+
+function App() {
+  const [tweaks, setTweaks] = useState(() => {
+    try { return { ...TWEAK_DEFAULTS, ...JSON.parse(localStorage.getItem('salik_tweaks') || '{}') }; }
+    catch { return TWEAK_DEFAULTS; }
+  });
+  const [paletteOpen, setPaletteOpen] = useState(false);
+  const [tweaksOpen, setTweaksOpen] = useState(false);
+  const [curtain, setCurtain] = useState(false);
+
+  useReveal();
+
+  // Apply theme + accent + density to <html>
+  useEffect(() => {
+    document.documentElement.setAttribute('data-theme', tweaks.theme);
+    document.documentElement.style.setProperty('--density-scale', tweaks.density === 'compact' ? '0.88' : tweaks.density === 'spacious' ? '1.12' : '1');
+    document.documentElement.style.setProperty('--grain-op', tweaks.grain ? '0.04' : '0');
+
+    // Accent variations
+    const accents = {
+      ink: ['#0A0A0A', '#2B2A26'],
+      graphite: ['#2B2A26', '#37352F'],
+      slate: ['#1e293b', '#334155'],
+    };
+    const [a, ah] = accents[tweaks.accent] || accents.ink;
+    if (tweaks.theme !== 'dark') {
+      document.documentElement.style.setProperty('--accent', a);
+      document.documentElement.style.setProperty('--accent-hover', ah);
+    }
+
+    // Font family swap
+    const fonts = {
+      inter: "'InterVariable','Inter',ui-sans-serif,system-ui,sans-serif",
+      serif: "'Instrument Serif',ui-serif,Georgia,serif",
+      mono: "'JetBrains Mono',ui-monospace,Menlo,monospace",
+    };
+    document.documentElement.style.setProperty('--font-display', fonts[tweaks.fontDisplay] || fonts.inter);
+
+    try { localStorage.setItem('salik_tweaks', JSON.stringify(tweaks)); } catch {}
+    window.parent?.postMessage({ type: '__edit_mode_set_keys', edits: tweaks }, '*');
+
+    if (window.lucide) window.lucide.createIcons();
+  }, [tweaks]);
+
+  // Edit mode protocol
+  useEffect(() => {
+    const onMsg = (e) => {
+      if (e.data?.type === '__activate_edit_mode') setTweaksOpen(true);
+      if (e.data?.type === '__deactivate_edit_mode') setTweaksOpen(false);
+    };
+    window.addEventListener('message', onMsg);
+    window.parent?.postMessage({ type: '__edit_mode_available' }, '*');
+    return () => window.removeEventListener('message', onMsg);
+  }, []);
+
+  // ⌘K
+  useEffect(() => {
+    const onKey = (e) => {
+      if ((e.metaKey || e.ctrlKey) && e.key === 'k') { e.preventDefault(); setPaletteOpen((v) => !v); }
+    };
+    window.addEventListener('keydown', onKey);
+    return () => window.removeEventListener('keydown', onKey);
+  }, []);
+
+  // Curtain on anchor nav — subtle wipe feel
+  useEffect(() => {
+    const onHash = () => {
+      setCurtain(true);
+      setTimeout(() => setCurtain(false), 820);
+    };
+    // Only on anchor clicks
+    const onClick = (e) => {
+      const a = e.target.closest('a[href^="#"]');
+      if (a && a.getAttribute('href').length > 1) {
+        setCurtain(true);
+        setTimeout(() => setCurtain(false), 820);
+      }
+    };
+    document.addEventListener('click', onClick);
+    return () => document.removeEventListener('click', onClick);
+  }, []);
+
+  const toggleTheme = useCallback(() => {
+    setTweaks((t) => ({ ...t, theme: t.theme === 'dark' ? 'light' : 'dark' }));
+  }, []);
+
+  const onAction = (a) => {
+    if (a === 'theme') toggleTheme();
+    else if (a === 'email') navigator.clipboard?.writeText('salik@salik.dev');
+    else if (a === 'resume') alert('Resume download (kit demo).');
+  };
+
+  return (
+    <>
+      <MagneticCursor />
+      <div className={`curtain ${curtain ? 'enter' : ''}`} />
+      <Nav onOpenPalette={() => setPaletteOpen(true)} theme={tweaks.theme} onToggleTheme={toggleTheme} />
+
+      <Hero variant={tweaks.heroVariant} />
+
+      <StackMarquee />
+
+      <Section
+        id="work"
+        eyebrow="SELECTED WORK — 2024 / 25"
+        title="Shipped, measured, still running."
+        subtitle="Four systems I designed, built, and operate. Numbers are real; links are (intentionally) not."
+        index="01"
+      >
+        {tweaks.projectsVariant === 'sticky' ? <ProjectSticky /> : <ProjectList />}
+      </Section>
+
+      <Section
+        id="architecture"
+        eyebrow="SYSTEM DESIGN"
+        title="How the pieces fit."
+        subtitle="A representative architecture I use for AI-powered products — edge-rendered clients, an orchestration layer, a tuned AI runtime, and boring reliable storage underneath."
+        index="02"
+      >
+        <Architecture />
+      </Section>
+
+      <Section
+        id="skills"
+        eyebrow="CAPABILITIES"
+        title="Full stack, sharp edges."
+        subtitle="I've written production code in every box below. Depth varies — I list it honestly."
+        index="03"
+      >
+        <Skills />
+      </Section>
+
+      <Section
+        id="services"
+        eyebrow="FREELANCE"
+        title="Taking on 2–3 contracts a quarter."
+        subtitle="Pick the shape that matches what you need. Email me with the messy details."
+        index="04"
+      >
+        <Services />
+      </Section>
+
+      <Section
+        id="experience"
+        eyebrow="PATH"
+        title="Where I've been."
+        index="05"
+      >
+        <Experience />
+      </Section>
+
+      <Section
+        id="contact"
+        eyebrow="GET IN TOUCH"
+        title=""
+        index="06"
+      >
+        <Contact />
+      </Section>
+
+      <footer className="footer">
+        <div className="container footer-inner">
+          <div className="footer-left">Designed & built by Salik, 2026.</div>
+          <div className="footer-right">
+            <span>v2.0</span>
+            <span>·</span>
+            <span>— made in Karachi</span>
+            <span>·</span>
+            <span>⌘K for anything</span>
+          </div>
+        </div>
+      </footer>
+
+      <CommandPalette open={paletteOpen} onClose={() => setPaletteOpen(false)} onAction={onAction} />
+
+      {tweaksOpen && <TweaksPanel tweaks={tweaks} setTweaks={setTweaks} onClose={() => setTweaksOpen(false)} />}
+    </>
+  );
+}
+
+function TweaksPanel({ tweaks, setTweaks, onClose }) {
+  const set = (k, v) => setTweaks((t) => ({ ...t, [k]: v }));
+  const opts = [
+    ['Theme', 'theme', ['light', 'dark']],
+    ['Accent', 'accent', ['ink', 'graphite', 'slate']],
+    ['Density', 'density', ['compact', 'comfortable', 'spacious']],
+    ['Display font', 'fontDisplay', ['inter', 'serif', 'mono']],
+    ['Hero layout', 'heroVariant', ['editorial', 'split', 'centered']],
+    ['Projects layout', 'projectsVariant', ['list', 'sticky']],
+    ['Grain', 'grain', [true, false]],
+  ];
+  return (
+    <div className="tweaks-panel">
+      <div className="tweaks-head">
+        <span className="tweaks-title">Tweaks</span>
+        <button className="tweaks-close" onClick={onClose}><Icon name="x" size={14} /></button>
+      </div>
+      {opts.map(([label, key, values]) => (
+        <div key={key} className="tweak-row">
+          <span className="tweak-label">{label}</span>
+          <div className="tweak-opts">
+            {values.map((v) => (
+              <button key={String(v)} className={`tweak-opt ${tweaks[key] === v ? 'is-on' : ''}`} onClick={() => set(key, v)}>
+                {String(v)}
+              </button>
+            ))}
+          </div>
+        </div>
+      ))}
+    </div>
+  );
+}
+
+ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+</script>
+</body>
+</html>

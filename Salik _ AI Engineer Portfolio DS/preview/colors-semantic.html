@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  body { padding: 22px 26px; background: var(--bg); display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  .tok { display: flex; align-items: center; gap: 12px; padding: 8px 10px; border: 0.5px solid var(--border); border-radius: 6px; }
+  .dot { width: 28px; height: 28px; border-radius: 6px; border: 0.5px solid var(--border-strong); flex-shrink: 0; }
+  .name { font-family: var(--font-mono); font-size: 11px; color: var(--fg); }
+  .val { font-family: var(--font-mono); font-size: 10px; color: var(--fg-subtle); margin-left: auto; }
+</style>
+</head>
+<body>
+  <div class="tok"><span class="dot" style="background:#FFFCF8"></span><span class="name">--bg</span><span class="val">paper</span></div>
+  <div class="tok"><span class="dot" style="background:#191918"></span><span class="name">--fg</span><span class="val">ink</span></div>
+  <div class="tok"><span class="dot" style="background:#F7F6F3"></span><span class="name">--bg-subtle</span><span class="val">50</span></div>
+  <div class="tok"><span class="dot" style="background:#57564F"></span><span class="name">--fg-muted</span><span class="val">600</span></div>
+  <div class="tok"><span class="dot" style="background:#EFEEEA"></span><span class="name">--bg-muted</span><span class="val">100</span></div>
+  <div class="tok"><span class="dot" style="background:#787774"></span><span class="name">--fg-subtle</span><span class="val">500</span></div>
+  <div class="tok"><span class="dot" style="background:#0A0A0A"></span><span class="name">--accent</span><span class="val">cta</span></div>
+  <div class="tok"><span class="dot" style="background:#E3E2DD"></span><span class="name">--border</span><span class="val">200</span></div>
+  <div class="tok"><span class="dot" style="background:#448361"></span><span class="name">--success</span><span class="val">rsrv</span></div>
+  <div class="tok"><span class="dot" style="background:#C4554D"></span><span class="name">--danger</span><span class="val">rsrv</span></div>
+</body>
+</html>

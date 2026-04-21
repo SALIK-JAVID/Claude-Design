@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  body { padding: 24px 28px; background: var(--bg); display: flex; gap: 22px; align-items: flex-end; }
+  .item { display: flex; flex-direction: column; align-items: center; gap: 8px; }
+  .box { width: 64px; height: 64px; background: var(--bg-muted); border: 0.5px solid var(--border-strong); }
+  .r-none { border-radius: 0; }
+  .r-xs   { border-radius: 2px; }
+  .r-sm   { border-radius: 4px; }
+  .r-md   { border-radius: 6px; }
+  .r-lg   { border-radius: 8px; }
+  .r-xl   { border-radius: 12px; }
+  .r-2xl  { border-radius: 16px; }
+  .r-full { border-radius: 9999px; }
+  .lbl { font-family: var(--font-mono); font-size: 10px; color: var(--fg-subtle); }
+  .title { font-family: var(--font-mono); font-size: 11px; color: var(--fg-subtle); letter-spacing: 0.08em; text-transform: uppercase; position: absolute; top: 16px; left: 28px; }
+</style>
+</head>
+<body>
+  <div class="title">Radii</div>
+  <div class="item"><div class="box r-none"></div><span class="lbl">0</span></div>
+  <div class="item"><div class="box r-xs"></div><span class="lbl">2</span></div>
+  <div class="item"><div class="box r-sm"></div><span class="lbl">4</span></div>
+  <div class="item"><div class="box r-md"></div><span class="lbl">6</span></div>
+  <div class="item"><div class="box r-lg"></div><span class="lbl">8</span></div>
+  <div class="item"><div class="box r-xl"></div><span class="lbl">12</span></div>
+  <div class="item"><div class="box r-2xl"></div><span class="lbl">16</span></div>
+  <div class="item"><div class="box r-full"></div><span class="lbl">full</span></div>
+</body>
+</html>

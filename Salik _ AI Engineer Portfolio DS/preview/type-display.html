@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  html, body { height: 100%; }
+  body { padding: 28px 32px; background: var(--bg); }
+  .stack { display: grid; gap: 16px; }
+  .row { display: flex; align-items: baseline; gap: 20px; }
+  .row .meta { font-family: var(--font-mono); font-size: 11px; color: var(--fg-subtle); min-width: 96px; letter-spacing: 0; }
+  .row .specimen { flex: 1; color: var(--fg); }
+  .display-xl { font-size: 72px; font-weight: 700; letter-spacing: -0.045em; line-height: 1; }
+  .display-serif { font-family: var(--font-serif); font-style: italic; font-size: 76px; line-height: 1; letter-spacing: -0.02em; font-weight: 400; }
+</style>
+</head>
+<body>
+  <div class="stack">
+    <div class="row">
+      <span class="meta">Inter 700 · 72/1.0</span>
+      <span class="specimen display-xl">Shipping AI.</span>
+    </div>
+    <div class="row">
+      <span class="meta">Instrument Serif italic · 76/1.0</span>
+      <span class="specimen display-serif">building&nbsp;for</span>
+    </div>
+  </div>
+</body>
+</html>

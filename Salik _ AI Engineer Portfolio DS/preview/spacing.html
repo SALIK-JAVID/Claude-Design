@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  body { padding: 24px 28px; background: var(--bg); }
+  .row { display: flex; align-items: flex-end; gap: 14px; }
+  .step { display: flex; flex-direction: column; align-items: center; gap: 6px; }
+  .bar { background: var(--fg); border-radius: 2px; width: 22px; }
+  .s0  { height: 4px; }  .s1 { height: 8px; }   .s2 { height: 12px; }
+  .s3  { height: 16px; } .s4 { height: 20px; }  .s5 { height: 24px; }
+  .s6  { height: 32px; } .s7 { height: 40px; }  .s8 { height: 48px; }
+  .s9  { height: 64px; } .s10 { height: 80px; }
+  .lbl { font-family: var(--font-mono); font-size: 10px; color: var(--fg-subtle); }
+  .title { font-family: var(--font-mono); font-size: 11px; color: var(--fg-subtle); letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 16px; }
+</style>
+</head>
+<body>
+  <div class="title">Spacing · 4px base grid</div>
+  <div class="row">
+    <div class="step"><div class="bar s0"></div><span class="lbl">1</span></div>
+    <div class="step"><div class="bar s1"></div><span class="lbl">2</span></div>
+    <div class="step"><div class="bar s2"></div><span class="lbl">3</span></div>
+    <div class="step"><div class="bar s3"></div><span class="lbl">4</span></div>
+    <div class="step"><div class="bar s4"></div><span class="lbl">5</span></div>
+    <div class="step"><div class="bar s5"></div><span class="lbl">6</span></div>
+    <div class="step"><div class="bar s6"></div><span class="lbl">8</span></div>
+    <div class="step"><div class="bar s7"></div><span class="lbl">10</span></div>
+    <div class="step"><div class="bar s8"></div><span class="lbl">12</span></div>
+    <div class="step"><div class="bar s9"></div><span class="lbl">16</span></div>
+    <div class="step"><div class="bar s10"></div><span class="lbl">20</span></div>
+  </div>
+</body>
+</html>
